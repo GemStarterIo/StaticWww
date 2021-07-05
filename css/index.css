@@ -145,7 +145,7 @@ button {
     border: 0.6rem solid #10143e;
     bottom: 0;
     transform-origin: center;
-    transform: translate(-50%, 0.6rem);
+    transform: translate(-50%, 0.4rem);
     left: 40%;
   }
 }
@@ -447,7 +447,7 @@ button {
   }
 }
 
-@media (min-width: 1330px) {
+@media (min-width: 1440px) {
   .product h4 {
     font-weight: bold;
     font-size: 260px;
@@ -745,6 +745,7 @@ button {
   position: relative;
   overflow-x: auto !important;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .cards .wrapper_content .slider_nav::-webkit-scrollbar {
   visibility: hidden !important;
@@ -1064,24 +1065,31 @@ button {
   top: 60px;
   left: -16px;
   width: 100vw;
-  height: 0;
-  border: solid 2px #10143e;
+  height: 4px;
+  background: #10143e;
 }
 .road_map .flex_box .flex_item ul {
   padding: 72px 0 72px 32px;
+  list-style: none;
 }
 .road_map .flex_box .flex_item ul li {
   font-weight: normal;
   font-size: 20px;
   line-height: 32px;
   color: #10143e;
+  position: relative;
+}
+.road_map .flex_box .flex_item ul li::before {
+  content: "\002E";
+  display: inline-block;
+  position: absolute;
+  left: -25px;
+  font-size: 48px;
+  line-height: 5px;
+  top: 0;
 }
 .road_map .flex_box .flex_item ul li.done {
   color: #e39712;
-  position: relative;
-}
-.road_map .flex_box .flex_item ul li.done::marker {
-  content: " ";
 }
 .road_map .flex_box .flex_item ul li.done::before {
   display: inline-block;
@@ -1089,6 +1097,8 @@ button {
   position: absolute;
   left: -30px;
   top: 0;
+  font-size: 20px;
+  line-height: 32px;
 }
 .road_map .go_live_abs {
   position: relative;
@@ -1145,6 +1155,15 @@ button {
   .road_map .flex_box .flex_item ul li {
     font-size: 24px;
     line-height: 42px;
+  }
+  .road_map .flex_box .flex_item ul li.done::before {
+    left: -30px;
+    top: 0;
+    font-size: 20px;
+    line-height: 46px;
+  }
+  .road_map .flex_box .flex_item ul li::before {
+    line-height: 18px;
   }
 }
 
