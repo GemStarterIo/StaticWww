@@ -443,7 +443,7 @@ button {
   }
 }
 
-@media (min-width: 1330px) {
+@media (min-width: 1440px) {
   .product h4 {
     font-weight: bold;
     font-size: 260px;
