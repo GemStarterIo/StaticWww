@@ -31,7 +31,7 @@ button {
   width: 100%;
   max-width: 1440px;
   margin: auto;
-  padding: 1.6rem;
+  padding: 2.4rem 1.6rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -412,6 +412,11 @@ button {
   font-size: 64px;
   line-height: 64px;
 }
+@media (max-width: 340px) {
+  .product h4 {
+    font-size: 58px;
+  }
+}
 .product p {
   font-weight: normal;
   font-size: 26px;
@@ -438,7 +443,7 @@ button {
   }
 }
 
-@media (min-width: 1230px) {
+@media (min-width: 1330px) {
   .product h4 {
     font-weight: bold;
     font-size: 260px;
@@ -989,40 +994,244 @@ button {
   }
 }
 
-.road_map .wrapper_content {
-  padding: 0;
+.road_map {
+  background-image: url("../images/road_map_bg_mobile.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: relative;
   overflow: hidden;
 }
+.road_map .separator {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border: 0.2rem solid #10143e;
+  top: 196px;
+  left: 0;
+}
+.road_map .separator .fat_line {
+  position: absolute;
+  width: 104px;
+  height: 0;
+  border: 0.6rem solid #10143e;
+  bottom: 0;
+  transform-origin: center;
+  transform: translate(-50%, 0.6rem);
+  left: 68px;
+}
+.road_map h3 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 48px;
+  text-transform: capitalize;
+}
+.road_map .flex_box {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+.road_map .flex_box .flex_item h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+}
+.road_map .flex_box .flex_item.phase-1 h3 {
+  position: relative;
+  display: inline-block;
+}
+.road_map .flex_box .flex_item.phase-1 h3::after {
+  content: url("../images/done_ico.svg");
+  display: inline-block;
+  position: relative;
+  width: 104px;
+  height: 38px;
+  right: -20px;
+  top: 8px;
+}
+.road_map .flex_box .flex_item.phase-4,
+.road_map .flex_box .flex_item.phase-5 {
+  position: relative;
+}
+.road_map .flex_box .flex_item.phase-4::after,
+.road_map .flex_box .flex_item.phase-5::after {
+  position: absolute;
+  content: "";
+  top: 60px;
+  left: -16px;
+  width: 100vw;
+  height: 0;
+  border: solid 2px #10143e;
+}
+.road_map .flex_box .flex_item ul {
+  padding: 72px 0 72px 32px;
+}
+.road_map .flex_box .flex_item ul li {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 32px;
+  color: #10143e;
+}
+.road_map .flex_box .flex_item ul li.done {
+  color: #e39712;
+  position: relative;
+}
+.road_map .flex_box .flex_item ul li.done::marker {
+  content: " ";
+}
+.road_map .flex_box .flex_item ul li.done::before {
+  display: inline-block;
+  content: url("../images/checkmark.svg");
+  position: absolute;
+  left: -30px;
+  top: 0;
+}
+.road_map .go_live_abs {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+.road_map .go_live_abs .ico {
+  width: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 16px;
+}
+.road_map .go_live_abs .ico .wallet,
+.road_map .go_live_abs .ico .mobile,
+.road_map .go_live_abs .ico .desktop {
+  width: 32px;
+  height: 32px;
+}
+.road_map .go_live_abs .go_live {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 48px;
+}
 
-.road_map .desktop {
-  display: none;
-}
-.road_map .desktop .phase-1 {
-  width: 400px;
-}
-.road_map .desktop .phase-2 {
-  width: 436px;
+@media screen and (min-width: 375px) {
+  .road_map {
+    background-image: url("../images/road_map_bg_mobile.png");
+    background-size: 100% 33%;
+  }
 }
 
-@media (min-width: 768px) {
-  .road_map h2 {
-    font-weight: 600;
+@media screen and (min-width: 768px) {
+  .road_map {
+    background-image: url("../images/road_map_bg_desktop.png");
+  }
+  .road_map .flex_box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .road_map .flex_box .flex_item {
+    width: 50%;
+  }
+  .road_map .flex_box .flex_item.phase-4::after {
+    display: none;
+  }
+  .road_map .flex_box .flex_item.phase-5::after {
+    left: -96px;
+    width: 50vw;
+  }
+  .road_map .flex_box .flex_item ul li {
+    font-size: 24px;
+    line-height: 42px;
+  }
+}
+
+@media screen and (min-width: 1330px) {
+  .road_map {
+    background-image: url("../images/road_map_bg_desktop.png");
+    background-size: 153% 63%;
+  }
+  .road_map .separator {
+    border: 0.2rem solid #10143e;
+    top: 330px;
+  }
+  .road_map .separator .fat_line {
+    position: absolute;
+    width: 400px;
+    transform: translate(0, 0.6rem);
+    left: 96px;
+  }
+  .road_map h3 {
     font-size: 56px;
     line-height: 80px;
   }
-  .road_map .mobile {
+  .road_map .flex_box {
+    justify-content: flex-start;
+    padding-bottom: 0;
+    padding-top: 96px;
+  }
+  .road_map .flex_box .flex_item {
+    width: 33%;
+    padding-right: 16px;
+  }
+  .road_map .flex_box .flex_item ul {
+    padding: 112px 0 96px 32px;
+  }
+  .road_map .flex_box .flex_item.phase-1 {
+    width: 31%;
+  }
+  .road_map .flex_box .flex_item.phase-2 {
+    width: 36%;
+  }
+  .road_map .flex_box .flex_item.phase-3 {
+    width: 33%;
+  }
+  .road_map .flex_box .flex_item.phase-4::after {
+    display: block;
+    left: -96px;
+    width: 50vw;
+  }
+  .road_map .flex_box .flex_item.phase-5::after {
     display: none;
   }
-  .road_map .desktop {
+  .road_map .go_live_abs {
+    margin-top: -40px;
+  }
+  .road_map .go_live_abs .ico {
+    width: 206px;
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 70px;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 48px;
+  }
+  .road_map .go_live_abs .ico .wallet,
+  .road_map .go_live_abs .ico .mobile,
+  .road_map .go_live_abs .ico .desktop {
+    width: 47px;
+    height: 47px;
+  }
+  .road_map .go_live_abs .go_live {
+    font-size: 56px;
+    line-height: 80px;
   }
 }
 
-@media (min-width: 1024px) {
-  .road_map .wrapper_content {
-    padding: 48px 96px;
+@media screen and (min-width: 1440px) {
+  .road_map {
+    background-image: url("../images/road_map_bg_desktop.png");
+    background-size: contain;
+  }
+  .road_map .separator .fat_line {
+    position: absolute;
+    width: 400px;
+    transform: translate(0, 0.6rem);
+    left: calc(((100vw - 1440px) / 2) + 96px);
+  }
+  .road_map .flex_box .flex_item {
+    width: 33%;
+    padding-right: 16px;
+  }
+  .road_map .flex_box .flex_item.phase-4::after {
+    display: block;
+    left: calc(-96px + ((100vw - 1440px) / -2));
+    width: 65vw;
   }
 }
 
