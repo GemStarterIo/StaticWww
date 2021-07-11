@@ -262,13 +262,6 @@ button {
   line-height: 48px;
   padding-bottom: 40px;
 }
-.why_synapse .content_flex .bottom_column .row {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding-bottom: 62px;
-}
 .why_synapse .content_flex .bottom_column .logos {
   display: flex;
   flex-wrap: wrap;
@@ -1700,7 +1693,7 @@ footer .wrapper_content .social_bar a img {
   line-height: 24px;
   color: #e39712;
 }
-.team .member_card .linkedin {
+.team .member_card svg {
   position: absolute;
   bottom: 16px;
   right: 16px;
@@ -1763,11 +1756,20 @@ footer .wrapper_content .social_bar a img {
   .team .flex-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
   }
   .team .flex-container .member_card {
     margin: 0;
+    margin-bottom: 24px;
+    margin-right: 24px;
   }
+}
+@media (min-width: 768px) and (min-width: 1440px) {
+  .team .flex-container .member_card:nth-of-type(3n + 2) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 768px) {
   .team .flex-container.advisor {
     justify-content: flex-start;
   }
@@ -2698,7 +2700,7 @@ nav .menu_burger.active div:nth-last-of-type(3) {
   cursor: pointer;
   width: 2.2rem;
 }
-.social_bar a img {
+.social_bar a path {
   width: 100%;
   height: auto;
 }
