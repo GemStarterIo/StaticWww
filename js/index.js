@@ -34,8 +34,6 @@ const setProductMenu = () => {
     const menuItems = [...document.querySelectorAll('.menu_item')]
     const slider = document.querySelector('.slider')
     menuItems?.map(item => {
-        console.log(item)
-
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const itemData = item.getAttribute('data-id')
