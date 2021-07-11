@@ -6,7 +6,7 @@ setProductMenu()
 createCanva()
 setMenuOpenListener()
 setStickyMenu()
-setTimer()
+// setTimer()
 setOpenCardListener();
 }
 
