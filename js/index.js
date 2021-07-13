@@ -8,12 +8,17 @@ setMenuOpenListener()
 setStickyMenu()
 // setTimer()
 setOpenCardListener();
+setScrollAnimations();
 }
 
 
 const createCanva = () => {
 
+
+const labels = ["Private Sale A", "Liquidity Providing Rewards", "Seed Sale","Exchanges", "Private Sale B", 
+"Community Private & PublicSale", "Research Fundation", "Team ", "Reserve", "Marketing", "Advisors", "Staking Rewards"]
 const data = {
+ labels: [...labels],
   datasets: [{
     label: 'Tokenomics',
     backgroundColor: 'rgb(255, 99, 132, 0)',
@@ -23,22 +28,29 @@ const data = {
 };
     const config = {
     type: 'pie',
-    data,
-    options: {}
-    };
+    data: data,
 
-    const chart = new Chart(document.getElementById('chart'), config)
+    };
+    Chart.defaults.plugins.legend.display= false;
+    const chart = new Chart(document.getElementById('chart'), config);
+
 }
 
 const setProductMenu = () => {
     const menuItems = [...document.querySelectorAll('.menu_item')]
-    const slider = document.querySelector('.slider')
+    const slides = [...document.querySelectorAll('.product_card')]
     menuItems?.map(item => {
+
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const itemData = item.getAttribute('data-id')
-            const itemSlide = document.getElementById(itemData)
-            slider?.scrollTo(itemSlide.offsetLeft, 0)
+            const itemSlide = document.getElementById(itemData);
+            slides.map(slide => {
+              if(slide.classList.contains('active')){
+                slide.classList.remove('active')
+              }
+            })
+            itemSlide.classList.add('active')
             menuItems.map(item => {
                 if(item.classList.contains("active")){
                     item.classList.remove('active')
@@ -47,6 +59,33 @@ const setProductMenu = () => {
             item.classList.add('active')
         })
     })
+    
+    //add intervar to slider
+
+    window.setInterval(()=> {
+      const activeSlide = slides.find(slide => {
+        return slide.classList.contains('active');
+      });
+      let index = slides.indexOf(activeSlide);
+      slides.map(slide => {
+              if(slide.classList.contains('active')){
+                slide.classList.remove('active')
+              }
+            })
+
+      menuItems.map(item => {
+        item.classList.remove('active')
+      })
+
+    index < slides.length - 1 ? index ++ : index = 0
+
+    slides[index].classList.add('active')
+    const menuItemID = slides[index].getAttribute('id');
+    const menuItem = document.querySelector(`[data-id="${menuItemID}"]`);
+    menuItem.classList.add('active')
+
+
+    }, 10000)
 }
 
 const setMenuOpenListener = () => {
@@ -164,5 +203,36 @@ const setOpenCardListener = () => {
 
   })
 }
+
+const setScrollAnimations = () => {
+  const scrollElements = document.querySelectorAll(".scroll");
+
+const elementInView = (el, scrollOffset = 0) => {
+  const elementTop = el.getBoundingClientRect().top;
+ 
+  return (
+    elementTop <= 
+    ((window.innerHeight || document.documentElement.clientHeight) - scrollOffset)
+  );}
+  const displayScrollElement = (element) => {
+  element.classList.add("scrolled");
+};
+const hideScrollElement = (element) => {
+  element.classList.remove("scrolled");
+};
+ 
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, 200)) {
+      displayScrollElement(el);
+    } else {
+      hideScrollElement(el);
+    }
+  })
+}
+window.addEventListener('scroll', () => {
+  handleScrollAnimation();
+})
+;}
 
 app()
