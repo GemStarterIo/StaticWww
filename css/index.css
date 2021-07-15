@@ -154,6 +154,9 @@ button {
     font-size: 5.6rem;
     max-width: 1035px;
   }
+  .splash .social_bar {
+    margin-top: 32px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -849,6 +852,7 @@ button {
 .cards {
   background-color: #ffd384;
   position: relative;
+  overflow: hidden;
 }
 .cards .wrapper_content {
   padding: 0;
@@ -861,8 +865,8 @@ button {
   width: 100%;
   margin: auto;
   position: relative;
-  overflow-x: auto !important;
-  overflow-y: hidden;
+  z-index: 3;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 .cards .wrapper_content .slider_nav::-webkit-scrollbar {
@@ -914,9 +918,7 @@ button {
 .cards .wrapper_content .slider {
   width: 100%;
   margin: auto;
-  overflow-x: auto !important;
-  overflow-y: hidden;
-  padding: 80px 0 48px;
+  padding: 32px 0 48px;
 }
 .cards .wrapper_content .slider::-webkit-scrollbar {
   visibility: hidden !important;
@@ -941,8 +943,16 @@ button {
   transition: opacity 0.5s;
   opacity: 1;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   visibility: visible;
+}
+.cards .wrapper_content .slider .product_card .gradient {
+  position: absolute;
+  width: 589px;
+  height: 589px;
+  z-index: 1;
+  top: -30px;
+  right: calc(50% - 100px);
 }
 .cards .wrapper_content .slider .product_card .product_content {
   position: relative;
@@ -951,14 +961,64 @@ button {
   margin: auto;
   height: fit-content;
   display: flex;
-  padding: 16px;
+  padding: 16px 16px 32px;
   flex-direction: column;
 }
-.cards .wrapper_content .slider .product_card img {
+.cards .wrapper_content .slider .product_card .separator {
+  position: absolute;
+  height: 4px;
+  background: #10143e;
+  bottom: 0;
+  width: calc(100% - 32px);
+  z-index: 3;
+  left: 16px;
+}
+.cards .wrapper_content .slider .product_card .separator .fat_line {
+  position: absolute;
+  height: 12px;
+  background: #10143e;
+  bottom: 0;
+  transform-origin: center;
+  transform: translate(-50%, 0.4rem);
+}
+.cards .wrapper_content .slider .product_card#launchpad .separator .fat_line {
+  width: 26px;
+  right: -14px;
+}
+.cards .wrapper_content .slider .product_card#cross-chain .separator .fat_line {
+  width: 84%;
+  right: -42%;
+}
+.cards
+  .wrapper_content
+  .slider
+  .product_card#Defi-Marketplace
+  .separator
+  .fat_line {
+  width: 14%;
+  right: auto;
+  left: 7%;
+}
+.cards
+  .wrapper_content
+  .slider
+  .product_card#VC-syndicate
+  .separator
+  .fat_line {
+  width: 44%;
+  right: -22%;
+  left: auto;
+}
+.cards .wrapper_content .slider .product_card#Incubator .separator .fat_line {
+  width: 24%;
+  left: 30%;
+}
+.cards .wrapper_content .slider .product_card svg {
   position: relative;
   width: 120px;
   height: auto;
   left: 16px;
+  z-index: 3;
 }
 .cards .wrapper_content .slider .product_card h4 {
   position: relative;
@@ -988,6 +1048,7 @@ button {
 @media (min-width: 1024px) {
   .cards {
     position: relative;
+    height: 938px;
   }
   .cards .wrapper_content {
     padding: 48px 96px;
@@ -995,8 +1056,13 @@ button {
   .cards .wrapper_content .slider {
     padding: 40px 0 48px;
   }
+  .cards .wrapper_content .slider_nav {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
   .cards .wrapper_content .slider .product_card .product_content {
     z-index: 1;
+    padding-bottom: 64px;
   }
   .cards .wrapper_content .slider .product_card .product_content h4 {
     font-size: 44px;
@@ -1005,14 +1071,54 @@ button {
   .cards .wrapper_content .slider .product_card .product_content h5 {
     font-size: 30px;
     line-height: 48px;
+    padding-bottom: 64px;
   }
-  .cards .wrapper_content .slider .product_card img {
+  .cards .wrapper_content .slider .product_card .product_content p {
+    font-size: 24px;
+    line-height: 42px;
+  }
+  .cards
+    .wrapper_content
+    .slider
+    .product_card
+    .product_content
+    p:nth-of-type(1) {
+    padding-bottom: 48px;
+  }
+  .cards .wrapper_content .slider .product_card svg {
     position: absolute;
-    width: 300px;
+    width: 400px;
     top: 80px;
     right: 0;
     z-index: 0;
     left: auto;
+    z-index: 2;
+  }
+  .cards .wrapper_content .slider .product_card#launchpad .separator .fat_line {
+    width: 90px;
+    right: -45px;
+  }
+  .cards .wrapper_content .slider .product_card#cross-chain .gradient {
+    top: 180px;
+    left: 50%;
+  }
+  .cards .wrapper_content .slider .product_card#Defi-Marketplace .gradient,
+  .cards .wrapper_content .slider .product_card#Incubator .gradient {
+    right: calc(50% - 238px);
+    top: 45%;
+    left: auto;
+  }
+  .cards .wrapper_content .slider .product_card#VC-syndicate .gradient {
+    left: calc(50% + 80px);
+    top: 35%;
+  }
+  .cards .wrapper_content .slider .product_card .gradient {
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    z-index: 1;
+    top: -100px;
+    left: calc(50% + 238px);
   }
 }
 
