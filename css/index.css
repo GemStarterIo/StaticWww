@@ -58,6 +58,15 @@ button {
   }
 }
 
+@keyframes enterRight {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 86px;
+  }
+}
+
 .splash {
   height: 720px;
   background-image: url("/dist/images/splash-bg.png");
@@ -71,15 +80,25 @@ button {
   font-weight: 600;
   font-size: 3rem;
   padding-top: 11.2rem;
-  padding-bottom: 7.2rem;
+  padding-bottom: 6.2rem;
   text-transform: uppercase;
   color: #10143e;
   max-width: 343px;
+}
+.splash .clock-name.hide {
+  visibility: hidden;
+}
+.splash .clock-name h5 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 16px;
 }
 .splash .clock {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
+  position: relative;
 }
 .splash .clock .col {
   text-align: left;
@@ -126,7 +145,7 @@ button {
 
 @media screen and (min-width: 768px) {
   .splash {
-    background-image: url("../images/splash-bg-desktop.png");
+    background-image: url("../images/splash-desktop-bg-new.jpg");
     background-position: center top;
   }
   .splash-header-main {
@@ -139,7 +158,6 @@ button {
 
 @media screen and (min-width: 1024px) {
   .splash {
-    background-image: url("../images/splash-bg-desktop.png");
     background-position: center top;
     height: 768px;
   }
@@ -147,14 +165,57 @@ button {
     position: relative;
   }
   .splash .social_bar {
+    margin-top: 0;
     position: absolute;
     right: 0;
     flex-direction: column;
     top: 192px;
     right: 40px;
+    border-right: solid 2px #10143e;
+    padding-right: 37px;
   }
   .splash .social_bar a {
+    position: relative;
+  }
+  .splash .social_bar a:not(:nth-last-of-type(1)) {
     margin-bottom: 2.5rem;
+  }
+  .splash .social_bar a::before {
+    opacity: 0;
+    text-transform: uppercase;
+    display: block;
+    position: absolute;
+    right: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #10143e;
+    width: 0;
+    overflow: hidden;
+  }
+  .splash .social_bar a:hover::before {
+    animation-delay: 0.2s;
+    animation: enterRight 0.2s forwards;
+    display: block;
+    opacity: 1;
+  }
+  .splash .social_bar a:hover.linkedin::before {
+    content: "Linkedin";
+  }
+  .splash .social_bar a:hover.medium::before {
+    content: "Medium";
+  }
+  .splash .social_bar a:hover.twitter::before {
+    content: "twitter";
+  }
+  .splash .social_bar a:hover.youtube::before {
+    content: "youtube";
+  }
+  .splash .social_bar a:hover.github::before {
+    content: "github";
+  }
+  .splash .social_bar a:hover.telegram::before {
+    content: "telegram";
   }
   .splash .separator .fat_line {
     position: absolute;
@@ -1430,7 +1491,6 @@ footer .wrapper_content .social_bar a img {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  text-transform: uppercase;
   margin-bottom: 39px;
   cursor: pointer;
 }
@@ -2321,6 +2381,7 @@ nav.sticky {
   width: 100%;
   background: #fff;
   transition: 0.5s;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 nav.sticky .wrapper_content {
   transition: 0.5s;

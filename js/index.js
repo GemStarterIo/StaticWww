@@ -50,7 +50,7 @@ const setProductMenu = () => {
                 slide.classList.remove('active')
               }
             })
-            itemSlide.classList.add('active')
+            itemSlide.classList.add('active', 'selected')
             menuItems.map(item => {
                 if(item.classList.contains("active")){
                     item.classList.remove('active')
@@ -62,7 +62,8 @@ const setProductMenu = () => {
     
     //add intervar to slider
 
-    window.setInterval(()=> {
+    setInterval(()=> {
+    const slides = [...document.querySelectorAll('.product_card')]
       const activeSlide = slides.find(slide => {
         return slide.classList.contains('active');
       });
@@ -77,13 +78,21 @@ const setProductMenu = () => {
         item.classList.remove('active')
       })
 
-    index < slides.length - 1 ? index ++ : index = 0
 
+    if( [...document.querySelectorAll('.selected')].some(slide => {
+      return slide.classList.contains('selected')
+    } ) === false ){
+      index < slides.length - 1 ? index ++ : index = 0
+    } 
+    
     slides[index].classList.add('active')
     const menuItemID = slides[index].getAttribute('id');
     const menuItem = document.querySelector(`[data-id="${menuItemID}"]`);
     menuItem.classList.add('active')
-
+    slides.map(slide => {
+         slide.classList.remove('selected')
+        });
+    
 
     }, 10000)
 }
