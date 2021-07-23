@@ -13,262 +13,171 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var app = function app() {
-  setProductMenu();
-  setScrollMenu();
-  setMenuOpenListener();
-  setStickyMenu(); // setTimer()
-
-  setOpenCardListener();
-  setScrollAnimations();
-};
-
-var createCanva = function createCanva() {
-  var labels = ["Private Sale A", "Liquidity Providing Rewards", "Seed Sale", "Exchanges", "Private Sale B", "Community Private & PublicSale", "Research Fundation", "Team ", "Reserve", "Marketing", "Advisors", "Staking Rewards"];
-  var data = {
-    labels: [].concat(labels),
-    datasets: [{
-      backgroundColor: 'rgb(255, 99, 132, 0)',
-      borderColor: 'rgb(0, 0, 0)',
-      data: [5.4, 5, 5, 5, 2.4, 2.6, 25, 15, 13, 9.6, 6, 6]
-    }]
-  };
-  var options = {
-    tooltips: {
-      callbacks: {
-        label: function label(tooltipItem, data) {
-          var label = data.datasets[tooltipItem.datasetIndex].label || '';
-          return label + "%";
+  setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations();
+},
+    createCanva = function createCanva() {
+  var e = {
+    type: "pie",
+    data: {
+      labels: ["Private Sale A", "Liquidity Providing Rewards", "Seed Sale", "Exchanges", "Private Sale B", "Community Private & PublicSale", "Research Fundation", "Team ", "Reserve", "Marketing", "Advisors", "Staking Rewards"],
+      datasets: [{
+        backgroundColor: "rgb(255, 99, 132, 0)",
+        borderColor: "rgb(0, 0, 0)",
+        data: [5.4, 5, 5, 5, 2.4, 2.6, 25, 15, 13, 9.6, 6, 6]
+      }]
+    },
+    options: {
+      tooltips: {
+        callbacks: {
+          label: function label(e, t) {
+            return (t.datasets[e.datasetIndex].label || "") + "%";
+          }
         }
       }
     }
   };
-  var config = {
-    type: 'pie',
-    data: data,
-    options: options
-  };
-  Chart.defaults.plugins.legend.display = false;
-  var ctx = document.getElementById('chart');
-  return new Chart(ctx, config);
-};
+  Chart.defaults.plugins.legend.display = !1;
+  var t = document.getElementById("chart");
+  return new Chart(t, e);
+},
+    setProductMenu = function setProductMenu() {
+  var e = _toConsumableArray(document.querySelectorAll(".menu_item")),
+      t = _toConsumableArray(document.querySelectorAll(".product_card"));
 
-var setProductMenu = function setProductMenu() {
-  var menuItems = _toConsumableArray(document.querySelectorAll('.menu_item'));
-
-  var slides = _toConsumableArray(document.querySelectorAll('.product_card'));
-
-  menuItems === null || menuItems === void 0 ? void 0 : menuItems.map(function (item) {
-    item.addEventListener('click', function (e) {
-      e.preventDefault();
-      var itemData = item.getAttribute('data-id');
-      var itemSlide = document.getElementById(itemData);
-      slides.map(function (slide) {
-        if (slide.classList.contains('active')) {
-          slide.classList.remove('active');
-        }
-      });
-      itemSlide.classList.add('active', 'selected');
-      menuItems.map(function (item) {
-        if (item.classList.contains("active")) {
-          item.classList.remove('active');
-        }
-      });
-      item.classList.add('active');
+  e !== null && e !== void 0 && e.map(function (s) {
+    s.addEventListener("click", function (c) {
+      c.preventDefault();
+      var r = s.getAttribute("data-id"),
+          n = document.getElementById(r);
+      t.map(function (e) {
+        e.classList.contains("active") && e.classList.remove("active");
+      }), n.classList.add("active", "selected"), e.map(function (e) {
+        e.classList.contains("active") && e.classList.remove("active");
+      }), s.classList.add("active");
     });
-  }); //add intervar to slider
-
-  setInterval(function () {
-    var slides = _toConsumableArray(document.querySelectorAll('.product_card'));
-
-    var activeSlide = slides.find(function (slide) {
-      return slide.classList.contains('active');
-    });
-    var index = slides.indexOf(activeSlide);
-    slides.map(function (slide) {
-      if (slide.classList.contains('active')) {
-        slide.classList.remove('active');
-      }
-    });
-    menuItems.map(function (item) {
-      item.classList.remove('active');
+  }), setInterval(function () {
+    var t = _toConsumableArray(document.querySelectorAll(".product_card")),
+        s = t.find(function (e) {
+      return e.classList.contains("active");
     });
 
-    if (_toConsumableArray(document.querySelectorAll('.selected')).some(function (slide) {
-      return slide.classList.contains('selected');
-    }) === false) {
-      index < slides.length - 1 ? index++ : index = 0;
-    }
-
-    slides[index].classList.add('active');
-    var menuItemID = slides[index].getAttribute('id');
-    var menuItem = document.querySelector("[data-id=\"".concat(menuItemID, "\"]"));
-    menuItem.classList.add('active');
-    slides.map(function (slide) {
-      slide.classList.remove('selected');
+    var c = t.indexOf(s);
+    t.map(function (e) {
+      e.classList.contains("active") && e.classList.remove("active");
+    }), e.map(function (e) {
+      e.classList.remove("active");
+    }), !1 === _toConsumableArray(document.querySelectorAll(".selected")).some(function (e) {
+      return e.classList.contains("selected");
+    }) && (c < t.length - 1 ? c++ : c = 0), t[c].classList.add("active");
+    var r = t[c].getAttribute("id");
+    document.querySelector("[data-id=\"".concat(r, "\"]")).classList.add("active"), t.map(function (e) {
+      e.classList.remove("selected");
     });
-  }, 10000);
-};
-
-var setScrollMenu = function setScrollMenu() {
-  var menuDesktop = document.querySelector('.menu_wrapper.desktop');
-
-  var links = _toConsumableArray(menuDesktop.querySelectorAll('a'));
-
-  links.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var scrollTo = link.getAttribute('href');
-      var scrollToElement = document.querySelector("".concat(scrollTo));
-      scrollToElement.scrollIntoView({
-        behavior: 'smooth'
+  }, 1e4);
+},
+    setScrollMenu = function setScrollMenu() {
+  _toConsumableArray(document.querySelector(".menu_wrapper.desktop").querySelectorAll("a")).forEach(function (e) {
+    e.addEventListener("click", function (t) {
+      t.preventDefault();
+      var s = e.getAttribute("href");
+      document.querySelector("".concat(s)).scrollIntoView({
+        behavior: "smooth"
       });
     });
   });
-};
-
-var setMenuOpenListener = function setMenuOpenListener() {
-  var btn = document.querySelector(".menu_burger");
-  var menu = document.querySelector(".menu_mobile");
-  var applyStickyBtn = document.querySelector(".apply_sticky_btn");
-  btn.addEventListener("click", function () {
-    menu.classList.toggle("active");
-    btn.classList.toggle("active");
-    applyStickyBtn.classList.toggle('active');
+},
+    setMenuOpenListener = function setMenuOpenListener() {
+  var e = document.querySelector(".menu_burger"),
+      t = document.querySelector(".menu_mobile"),
+      s = document.querySelector(".apply_sticky_btn");
+  e.addEventListener("click", function () {
+    t.classList.toggle("active"), e.classList.toggle("active"), s.classList.toggle("active");
   });
 
-  var menuBtns = _toConsumableArray(menu.querySelectorAll('a'));
-
-  menuBtns.map(function (menuBtn) {
-    menuBtn.addEventListener('click', function (event) {
-      event.preventDefault();
-      var scrollTo = menuBtn.getAttribute('href');
-      menu.classList.remove('active');
-      btn.classList.remove('active');
-      applyStickyBtn.classList.remove('active');
-      var scrollToElement = document.querySelector("".concat(scrollTo));
-      console.log(scrollToElement);
-      setTimeout(function () {
-        scrollToElement.scrollIntoView({
-          behavior: 'smooth'
+  _toConsumableArray(t.querySelectorAll("a")).map(function (c) {
+    c.addEventListener("click", function (r) {
+      r.preventDefault();
+      var n = c.getAttribute("href");
+      t.classList.remove("active"), e.classList.remove("active"), s.classList.remove("active");
+      var o = document.querySelector("".concat(n));
+      console.log(o), setTimeout(function () {
+        o.scrollIntoView({
+          behavior: "smooth"
         });
       }, 500);
     });
   });
-};
-
-var setStickyMenu = function setStickyMenu() {
+},
+    setStickyMenu = function setStickyMenu() {
   window.addEventListener("scroll", function () {
-    var navbar = document.querySelector('nav');
-    var sticky = navbar.offsetTop;
-
-    if (window.pageYOffset > sticky) {
-      navbar.classList.add("sticky");
-    } else {
-      navbar.classList.remove("sticky");
-    }
+    var e = document.querySelector("nav"),
+        t = e.offsetTop;
+    window.pageYOffset > t ? e.classList.add("sticky") : e.classList.remove("sticky");
   });
-};
+},
+    setTimer = function setTimer() {
+  !function (e, t) {
+    var s = document.getElementById(e),
+        c = s.querySelector(".days").querySelector(".counter"),
+        r = s.querySelector(".hours").querySelector(".counter"),
+        n = s.querySelector(".minutes").querySelector(".counter"),
+        o = s.querySelector(".seconds").querySelector(".counter");
 
-var setTimer = function setTimer() {
-  function getTimeRemaining(deadline) {
-    var total = Date.parse(deadline) - Date.parse(new Date());
-    var seconds = Math.floor(total / 1000 % 60);
-    var minutes = Math.floor(total / 1000 / 60 % 60);
-    var hours = Math.floor(total / (1000 * 60 * 60) % 24);
-    var days = Math.floor(total / (1000 * 60 * 60 * 24));
-    return {
-      total: total,
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds
-    };
-  }
+    function a() {
+      var e = function (e) {
+        var t = Date.parse(e) - Date.parse(new Date()),
+            s = Math.floor(t / 1e3 % 60),
+            c = Math.floor(t / 1e3 / 60 % 60),
+            r = Math.floor(t / 36e5 % 24);
+        return {
+          total: t,
+          days: Math.floor(t / 864e5),
+          hours: r,
+          minutes: c,
+          seconds: s
+        };
+      }(t);
 
-  function initializeClock(id, deadline) {
-    var clock = document.getElementById(id);
-    var daysSpan = clock.querySelector('.days').querySelector('.counter');
-    var hoursSpan = clock.querySelector('.hours').querySelector('.counter');
-    var minutesSpan = clock.querySelector('.minutes').querySelector('.counter');
-    var secondsSpan = clock.querySelector('.seconds').querySelector('.counter');
-
-    function updateClock() {
-      var t = getTimeRemaining(deadline);
-      daysSpan.innerHTML = t.days;
-      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
+      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
     }
 
-    updateClock();
-    var timeinterval = setInterval(updateClock, 1000);
-  }
+    a();
+    var l = setInterval(a, 1e3);
+  }("clock", new Date("July 25, 2021"));
+},
+    setOpenCardListener = function setOpenCardListener() {
+  var _t$querySelector;
 
-  var deadline = new Date('July 25, 2021');
-  initializeClock('clock', deadline);
-};
+  var e = _toConsumableArray(document.querySelectorAll(".member_card")),
+      t = document.getElementById("modal");
 
-var setOpenCardListener = function setOpenCardListener() {
-  var cards = _toConsumableArray(document.querySelectorAll('.member_card'));
+  t !== null && t !== void 0 && (_t$querySelector = t.querySelector(".close__card_btn")) !== null && _t$querySelector !== void 0 && _t$querySelector.addEventListener("click", function () {
+    t.classList.toggle("active");
+  }), e.map(function (e) {
+    var _e$querySelector;
 
-  var extendedCard = document.getElementById('modal');
-  var closeBtn = extendedCard === null || extendedCard === void 0 ? void 0 : extendedCard.querySelector('.close__card_btn');
-  closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener('click', function () {
-    extendedCard.classList.toggle('active');
-  });
-  cards.map(function (card) {
-    var openCard = card.querySelector('.open_hidden_card');
-    openCard === null || openCard === void 0 ? void 0 : openCard.addEventListener('click', function (e) {
-      // fetch content from card and fill modal
-      extendedCard.classList.toggle('active');
-      extendedCard.querySelector('.name').innerHTML = card.querySelector('.name').innerHTML;
-      extendedCard.querySelector('.role').innerHTML = card.querySelector('.role').innerHTML;
-      extendedCard.querySelector('.description').innerHTML = card.querySelector('.extended_description').innerHTML;
-      extendedCard.querySelector('.social_wrapper').innerHTML = card.querySelector('.social_wrapper').innerHTML;
+    (_e$querySelector = e.querySelector(".open_hidden_card")) === null || _e$querySelector === void 0 ? void 0 : _e$querySelector.addEventListener("click", function (s) {
+      t.classList.toggle("active"), t.querySelector(".name").innerHTML = e.querySelector(".name").innerHTML, t.querySelector(".role").innerHTML = e.querySelector(".role").innerHTML, t.querySelector(".description").innerHTML = e.querySelector(".extended_description").innerHTML, t.querySelector(".social_wrapper").innerHTML = e.querySelector(".social_wrapper").innerHTML;
     });
   });
-};
-
-var setScrollAnimations = function setScrollAnimations() {
-  var scrollElements = document.querySelectorAll(".scroll");
-
-  var elementInView = function elementInView(el) {
-    var scrollOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    var elementTop = el.getBoundingClientRect().top;
-    return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - scrollOffset;
-  };
-
-  var displayScrollElement = function displayScrollElement(element) {
-    if (element.classList.contains('tokenomics') && !element.classList.contains('created')) {
-      element.classList.add('created');
-      element.classList.add("scrolled");
-      setTimeout(createCanva, 500);
-    } else {
-      element.classList.add("scrolled");
-    }
-  };
-
-  var hideScrollElement = function hideScrollElement(element) {
-    element.classList.remove("scrolled");
-  };
-
-  var handleScrollAnimation = function handleScrollAnimation() {
-    scrollElements.forEach(function (el) {
-      if (elementInView(el, 200)) {
-        displayScrollElement(el);
-      } else {
-        hideScrollElement(el);
-      }
+},
+    setScrollAnimations = function setScrollAnimations() {
+  var e = document.querySelectorAll(".scroll"),
+      t = function t() {
+    e.forEach(function (e) {
+      var t;
+      (function (e) {
+        var t = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        return e.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) - t;
+      })(e, 200) ? (t = e).classList.contains("tokenomics") && !t.classList.contains("created") ? (t.classList.add("created"), t.classList.add("scrolled"), setTimeout(createCanva, 500)) : t.classList.add("scrolled") : function (e) {
+        e.classList.remove("scrolled");
+      }(e);
     });
   };
 
-  window.addEventListener('scroll', function () {
-    handleScrollAnimation();
+  window.addEventListener("scroll", function () {
+    t();
   });
 };
 
-app();
+setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations();
