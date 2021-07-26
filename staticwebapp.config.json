@@ -1,4 +1,16 @@
 {
-  "route": "/kr",
-  "rewrite": "/index.kr.html"
+  "routes": [
+	{
+		"route": "/kr",
+		"rewrite": "/index.kr.html"
+	},
+	{
+		"route": "/kr/*",
+		"rewrite": "/index.kr.html"
+	}
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
 }
