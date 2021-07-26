@@ -2383,7 +2383,8 @@ footer {
         filter: grayscale(100%);
         -webkit-filter: grayscale(100%);
         transition: all 0.7s;
-        transform: scale(1); }
+        transform: scale(1);
+        margin-bottom: 10px; }
         .press .wrapper_content .bottom_column .logos img:hover {
           transition: all 0.7s;
           filter: grayscale(0%);
