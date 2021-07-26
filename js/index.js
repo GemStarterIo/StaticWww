@@ -123,7 +123,7 @@ var app = function app() {
         n = s.querySelector(".minutes").querySelector(".counter"),
         o = s.querySelector(".seconds").querySelector(".counter");
 
-    function a() {
+    function l() {
       var e = function (e) {
         var t = Date.parse(e) - Date.parse(new Date()),
             s = Math.floor(t / 1e3 % 60),
@@ -138,11 +138,11 @@ var app = function app() {
         };
       }(t);
 
-      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
+      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(a);
     }
 
-    a();
-    var l = setInterval(a, 1e3);
+    l();
+    var a = setInterval(l, 1e3);
   }("clock", new Date("July 25, 2021"));
 },
     setOpenCardListener = function setOpenCardListener() {
@@ -175,7 +175,11 @@ var app = function app() {
     });
   };
 
-  window.addEventListener("scroll", function () {
+  setTimeout(function () {
+    window.scrollY > 50 && window.dispatchEvent(new Event("scroll", function () {
+      console.log("scrolled");
+    }));
+  }, 0), window.addEventListener("scroll", function () {
     t();
   });
 };
