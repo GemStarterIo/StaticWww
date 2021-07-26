@@ -176,9 +176,7 @@ var app = function app() {
   };
 
   setTimeout(function () {
-    window.scrollY > 50 && window.dispatchEvent(new Event("scroll", function () {
-      console.log("scrolled");
-    }));
+    window.scrollY > 50 && window.dispatchEvent(new Event("scroll", function () {}));
   }, 0), window.addEventListener("scroll", function () {
     t();
   });
