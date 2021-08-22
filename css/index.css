@@ -188,10 +188,18 @@ button {
     font-weight: 600;
     font-size: 3rem;
     padding-top: 11.2rem;
-    padding-bottom: 6.2rem;
+    padding-bottom: 2.2rem;
     text-transform: uppercase;
     color: #10143e;
     max-width: 343px; }
+  .splash iframe {
+    max-height: 400px; }
+    @media (max-width: 768px) {
+      .splash iframe {
+        max-height: 220px; } }
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .splash iframe {
+        max-height: 300px; } }
   .splash .clock-name.hide {
     visibility: hidden; }
   .splash .clock-name h5 {
@@ -244,9 +252,9 @@ button {
   .splash {
     background-position: center top; }
     .splash-header-main {
-      line-height: 8rem;
+      line-height: 7rem;
       font-weight: 600;
-      font-size: 5.6rem;
+      font-size: 3.6rem;
       max-width: 1035px; }
     .splash .social_bar {
       margin-top: 32px; } }
@@ -258,6 +266,8 @@ button {
     height: 768px; }
     .splash .wrapper_content {
       position: relative; }
+    .splash .frame {
+      margin-bottom: 5rem; }
     .splash .social_bar {
       margin-top: 0;
       position: absolute;
@@ -401,7 +411,8 @@ button {
         font-size: 26px;
         line-height: 48px; }
     .why_synapse .content_flex .bottom_column {
-      margin-top: 72px; }
+      margin-top: 72px;
+      width: 100%; }
       .why_synapse .content_flex .bottom_column h4 {
         font-weight: 600;
         font-size: 30px;
@@ -413,28 +424,22 @@ button {
         line-height: 48px;
         padding-bottom: 40px; }
       .why_synapse .content_flex .bottom_column .logos {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center; }
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        margin: auto;
+        grid-row-gap: 32px; }
         .why_synapse .content_flex .bottom_column .logos img {
           height: auto;
-          margin-bottom: 62px; }
-          @media (max-width: 375px) {
-            .why_synapse .content_flex .bottom_column .logos img {
-              margin: auto;
-              margin-bottom: 62px; }
-              .why_synapse .content_flex .bottom_column .logos img:nth-of-type(odd) {
-                margin: auto;
-                margin-bottom: 62px; } }
-          .why_synapse .content_flex .bottom_column .logos img:nth-of-type(odd) {
-            margin-right: 57px; }
-        @media (min-width: 475px) and (max-width: 1024px) {
+          margin: auto;
+          filter: grayscale(1);
+          transition: 0.5s; }
+        @media (min-width: 390px) and (max-width: 525px) {
           .why_synapse .content_flex .bottom_column .logos {
-            width: 100%;
-            justify-content: space-around; }
-            .why_synapse .content_flex .bottom_column .logos img {
-              margin: 0 62px 62px 62px !important; } }
+            grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 526px) and (max-width: 1024px) {
+          .why_synapse .content_flex .bottom_column .logos {
+            grid-template-columns: repeat(3, 1fr); } }
 
 @media screen and (min-width: 1024px) {
   .why_synapse .content_flex {
@@ -501,16 +506,11 @@ button {
         font-weight: 400; }
       .why_synapse .content_flex .bottom_column .logos {
         width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center; }
+        display: grid;
+        grid-template-columns: repeat(6, 1fr); }
         .why_synapse .content_flex .bottom_column .logos img {
           height: auto;
-          margin: 0;
-          margin-right: 62px !important; } }
-        @media screen and (min-width: 1024px) and (min-width: 1266px) {
-          .why_synapse .content_flex .bottom_column .logos img {
-            margin-bottom: 0; } }
+          margin: auto !important; } }
 
 .product {
   color: #10143e;
@@ -1070,13 +1070,19 @@ button {
       padding-bottom: 40px; }
     .cross-chain .wrapper_content .bottom_column .logos {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; }
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 60px; }
+      @media (min-width: 525px) {
+        .cross-chain .wrapper_content .bottom_column .logos {
+          grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 768px) {
+        .cross-chain .wrapper_content .bottom_column .logos {
+          grid-template-columns: repeat(3, 1fr); } }
       .cross-chain .wrapper_content .bottom_column .logos img {
         height: auto;
-        margin-bottom: 62px; }
+        margin: auto;
+        margin-bottom: 0; }
 
 @media screen and (min-width: 1024px) {
   .cross-chain.scrolled .logos img {
@@ -1157,7 +1163,13 @@ button {
     .cross-chain .wrapper_content .bottom_column .logos {
       width: 100%;
       max-width: 100%;
-      justify-content: space-between; } }
+      display: grid;
+      grid-template-columns: repeat(6, 1fr); }
+      .cross-chain .wrapper_content .bottom_column .logos img {
+        margin: auto;
+        filter: grayscale(1) !important; }
+        .cross-chain .wrapper_content .bottom_column .logos img:hover {
+          filter: grayscale(0) !important; } }
 
 .road_map {
   background-image: url("../images/road_map_bg_mobile.png");
@@ -1729,7 +1741,7 @@ footer {
       margin-bottom: 24px;
       margin-right: 24px; } }
     @media (min-width: 1200px) and (min-width: 1440px) {
-      .team .flex-container .member_card:nth-of-type(n + 3) {
+      .team .flex-container .member_card:nth-of-type(3n + 3) {
         margin-right: 0; } }
 
 .tokenomics {
@@ -2395,6 +2407,132 @@ footer {
     @media screen and (min-width: 1024px) and (min-width: 1266px) {
       .press .wrapper_content .bottom_column .logos a:nth-last-of-type(1) {
         margin-bottom: 0; } }
+
+#creditcard {
+  background: #10143e;
+  color: #fff; }
+  #creditcard .wrapper_content {
+    padding: 4.8rem 1.6rem;
+    overflow: hidden; }
+  #creditcard h3 {
+    font-size: 3rem;
+    line-height: 4.4rem;
+    font-weight: 600;
+    z-index: 2;
+    position: relative; }
+  #creditcard h5 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    font-weight: 400;
+    z-index: 2;
+    position: relative; }
+  #creditcard ul {
+    margin: 6.4rem 0 10rem 2.4rem;
+    max-width: 510px;
+    position: relative;
+    z-index: 2; }
+    #creditcard ul li {
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+      line-height: 4.3rem;
+      font-weight: 400; }
+  #creditcard a {
+    padding: 8px 40px;
+    background: #e39712;
+    color: #10143e;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    z-index: -1;
+    opacity: 0;
+    position: relative; }
+  #creditcard .cards_image_container {
+    display: block;
+    z-index: 0;
+    position: relative; }
+    #creditcard .cards_image_container img {
+      display: none; }
+      #creditcard .cards_image_container img.active {
+        transform: scale(2);
+        top: 0;
+        margin-top: -50px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        -webkit-animation: 1s show;
+        animation: 1s show; }
+        @media (min-width: 525px) and (max-width: 1024px) {
+          #creditcard .cards_image_container img.active {
+            transform: scale(1.2);
+            margin-top: -150px; } }
+
+@media (min-width: 1024px) {
+  #creditcard {
+    min-height: 946px; }
+    #creditcard .wrapper_content {
+      padding: 9.6rem; }
+    #creditcard h3 {
+      font-size: 4.4rem;
+      line-height: 6.4rem; }
+    #creditcard h5 {
+      font-size: 3rem;
+      line-height: 3.2rem;
+      font-weight: 400; }
+    #creditcard ul {
+      margin: 6.4rem 0 17rem 2.4rem;
+      max-width: 450px;
+      z-index: 2;
+      position: relative; }
+      #creditcard ul li {
+        margin-bottom: 24px;
+        font-size: 2.4rem;
+        line-height: 4.3rem;
+        font-weight: 400;
+        font-style: normal; }
+    #creditcard a {
+      padding: 8px 80px;
+      font-size: 1.6rem;
+      text-transform: uppercase; } }
+
+@media (min-width: 1024px) {
+  #creditcard {
+    overflow: hidden; }
+    #creditcard .wrapper_content {
+      position: relative; }
+    #creditcard .position_wrapper {
+      position: relative; }
+      #creditcard .position_wrapper .switcher {
+        position: absolute;
+        bottom: 140px;
+        left: 300px;
+        display: flex;
+        align-items: flex-end; }
+        #creditcard .position_wrapper .switcher .bar {
+          width: 24px;
+          height: 4px;
+          margin-right: 10px;
+          background: #fff;
+          cursor: pointer;
+          transition: 0.5s; }
+          #creditcard .position_wrapper .switcher .bar.active {
+            transition: 0.5s;
+            height: 12px; }
+    #creditcard .cards_image_container {
+      display: block;
+      position: absolute;
+      left: 30%;
+      top: 5%;
+      z-index: 0; }
+      #creditcard .cards_image_container img {
+        display: none; }
+        #creditcard .cards_image_container img.active {
+          transform: scale(1.2);
+          display: block;
+          width: auto;
+          height: auto;
+          -webkit-animation: 1s show;
+          animation: 1s show; } }
 
 nav {
   position: fixed;
