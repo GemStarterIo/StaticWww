@@ -2469,9 +2469,10 @@ footer {
 
 @media (min-width: 1024px) {
   #creditcard {
-    min-height: 946px; }
+    min-height: 746px; }
     #creditcard .wrapper_content {
-      padding: 9.6rem; }
+      padding: 9.6rem;
+      padding-bottom: 0; }
     #creditcard h3 {
       font-size: 4.4rem;
       line-height: 6.4rem; }
@@ -2480,7 +2481,7 @@ footer {
       line-height: 3.2rem;
       font-weight: 400; }
     #creditcard ul {
-      margin: 6.4rem 0 17rem 2.4rem;
+      margin: 6.4rem 0 7rem 2.4rem;
       max-width: 450px;
       z-index: 2;
       position: relative; }
