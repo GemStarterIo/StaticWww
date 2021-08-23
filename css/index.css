@@ -53,11 +53,15 @@ button {
 
 @-webkit-keyframes showFromTop {
   0% {
-    opacity: 0;
-    transform: translateY(-70px); }
+    height: 0; }
   100% {
-    opacity: 1;
-    transform: translateY(0); } }
+    height: 20px; } }
+
+@keyframes showFromTop {
+  0% {
+    height: 0; }
+  100% {
+    height: 20px; } }
 
 @keyframes showFromTop {
   0% {
@@ -160,21 +164,21 @@ button {
 @-webkit-keyframes puff-in-center {
   0% {
     transform: scale(2);
-    filter: blur(4px);
+    filter: blur(4px) grayscale(1);
     opacity: 0; }
   100% {
     transform: scale(1);
-    filter: blur(0px);
+    filter: blur(0px) grayscale(1);
     opacity: 1; } }
 
 @keyframes puff-in-center {
   0% {
     transform: scale(2);
-    filter: blur(4px);
+    filter: blur(4px) grayscale(1);
     opacity: 0; }
   100% {
     transform: scale(1);
-    filter: blur(0px);
+    filter: blur(0px) grayscale(1);
     opacity: 1; } }
 
 .splash {
@@ -1167,8 +1171,9 @@ button {
       grid-template-columns: repeat(6, 1fr); }
       .cross-chain .wrapper_content .bottom_column .logos img {
         margin: auto;
-        filter: grayscale(1) !important; }
+        filter: grayscale(1); }
         .cross-chain .wrapper_content .bottom_column .logos img:hover {
+          -o-filter: grayscale(0);
           filter: grayscale(0) !important; } }
 
 .road_map {
@@ -2500,25 +2505,26 @@ footer {
   #creditcard {
     overflow: hidden; }
     #creditcard .wrapper_content {
-      position: relative; }
+      position: relative;
+      overflow: visible; }
+    #creditcard .switcher {
+      position: absolute;
+      bottom: 20px;
+      left: calc(50% + 250px);
+      display: flex;
+      align-items: flex-end; }
+      #creditcard .switcher .bar {
+        width: 24px;
+        height: 4px;
+        margin-right: 10px;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.5s; }
+        #creditcard .switcher .bar.active {
+          transition: 0.5s;
+          height: 12px; }
     #creditcard .position_wrapper {
       position: relative; }
-      #creditcard .position_wrapper .switcher {
-        position: absolute;
-        bottom: 140px;
-        left: 300px;
-        display: flex;
-        align-items: flex-end; }
-        #creditcard .position_wrapper .switcher .bar {
-          width: 24px;
-          height: 4px;
-          margin-right: 10px;
-          background: #fff;
-          cursor: pointer;
-          transition: 0.5s; }
-          #creditcard .position_wrapper .switcher .bar.active {
-            transition: 0.5s;
-            height: 12px; }
     #creditcard .cards_image_container {
       display: block;
       position: absolute;
@@ -2528,12 +2534,22 @@ footer {
       #creditcard .cards_image_container img {
         display: none; }
         #creditcard .cards_image_container img.active {
-          transform: scale(1.2);
+          transform: scale(1.5);
           display: block;
           width: auto;
           height: auto;
           -webkit-animation: 1s show;
-          animation: 1s show; } }
+          animation: 1s show; }
+          #creditcard .cards_image_container img.active.first {
+            margin-left: 150px;
+            margin-top: 50px;
+            width: 1008px !important; }
+          #creditcard .cards_image_container img.active.second {
+            margin-top: -50px;
+            margin-left: -40px; }
+          #creditcard .cards_image_container img.active.third {
+            margin-top: -100px;
+            margin-left: 50px; } }
 
 nav {
   position: fixed;
@@ -2570,6 +2586,8 @@ nav {
     width: -moz-fit-content;
     width: fit-content;
     z-index: 2; }
+    nav .logo_wrapper .menu_language {
+      display: none; }
     nav .logo_wrapper img {
       width: 89px;
       height: auto; }
@@ -2664,6 +2682,45 @@ nav {
     height: auto; } }
 
 @media screen and (min-width: 1024px) {
+  nav .logo_wrapper .menu_language {
+    transition: 1s;
+    position: absolute;
+    width: 46px;
+    top: 52px;
+    right: 66px;
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    border-radius: 25px;
+    padding: 8px;
+    overflow: hidden; }
+    nav .logo_wrapper .menu_language svg {
+      width: 30px !important;
+      height: 30px !important; }
+    nav .logo_wrapper .menu_language .language_btn {
+      display: block;
+      color: #000 !important; }
+      nav .logo_wrapper .menu_language .language_btn:hover {
+        color: #fed384 !important; }
+    nav .logo_wrapper .menu_language:hover {
+      transition: 1s;
+      background: #fff;
+      height: 120px;
+      box-shadow: 0 3px 6px rgba(90, 90, 90, 0.562); }
+      nav .logo_wrapper .menu_language:hover .language_btn {
+        position: relative;
+        right: auto;
+        top: 10px;
+        -webkit-animation: showFromTop 1s forwards;
+        animation: showFromTop 1s forwards;
+        opacity: 1;
+        height: auto;
+        text-align: center;
+        width: 100%; }
+        nav .logo_wrapper .menu_language:hover .language_btn:nth-of-type(2) {
+          top: 20px;
+          -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s; }
   nav.sticky {
     top: 0;
     width: 100%;
@@ -2676,6 +2733,13 @@ nav {
       nav.sticky .wrapper_content .logo_wrapper .no-sticky {
         opacity: 1;
         transform: scale(1); }
+      nav.sticky .wrapper_content .logo_wrapper .menu_language {
+        top: 20px;
+        right: 0; }
+        nav.sticky .wrapper_content .logo_wrapper .menu_language .language_btn:hover {
+          color: #fff !important; }
+        nav.sticky .wrapper_content .logo_wrapper .menu_language:hover {
+          background: #fed384; }
       nav.sticky .wrapper_content .logo_wrapper a {
         position: absolute;
         display: block;

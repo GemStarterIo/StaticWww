@@ -13,7 +13,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var app = function app() {
-  setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations();
+  setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations(), setCreditCardsmenu();
 },
     createCanva = function createCanva() {
   var e = {
@@ -123,7 +123,7 @@ var app = function app() {
         n = s.querySelector(".minutes").querySelector(".counter"),
         o = s.querySelector(".seconds").querySelector(".counter");
 
-    function l() {
+    function a() {
       var e = function (e) {
         var t = Date.parse(e) - Date.parse(new Date()),
             s = Math.floor(t / 1e3 % 60),
@@ -138,11 +138,11 @@ var app = function app() {
         };
       }(t);
 
-      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(a);
+      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
     }
 
-    l();
-    var a = setInterval(l, 1e3);
+    a();
+    var l = setInterval(a, 1e3);
   }("clock", new Date("July 25, 2021"));
 },
     setOpenCardListener = function setOpenCardListener() {
@@ -180,6 +180,22 @@ var app = function app() {
   }, 0), window.addEventListener("scroll", function () {
     t();
   });
+},
+    setCreditCardsmenu = function setCreditCardsmenu() {
+  var e = document.querySelector("#creditcard"),
+      t = _toConsumableArray(e.querySelectorAll(".card")),
+      s = _toConsumableArray(e.querySelectorAll(".bar"));
+
+  s.map(function (e, c) {
+    e.addEventListener("click", function () {
+      var r = c;
+      s.map(function (e) {
+        return e.classList.remove("active");
+      }), e.classList.add("active"), t.map(function (e, s) {
+        e.classList.remove("active"), r == s && t[s].classList.add("active");
+      });
+    });
+  });
 };
 
-setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations();
+setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations(), setCreditCardsmenu();
