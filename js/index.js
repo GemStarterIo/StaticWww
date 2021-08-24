@@ -186,16 +186,17 @@ var app = function app() {
       t = _toConsumableArray(e.querySelectorAll(".card")),
       s = _toConsumableArray(e.querySelectorAll(".bar"));
 
-  s.map(function (e, c) {
-    e.addEventListener("click", function () {
-      var r = c;
-      s.map(function (e) {
-        return e.classList.remove("active");
-      }), e.classList.add("active"), t.map(function (e, s) {
-        e.classList.remove("active"), r == s && t[s].classList.add("active");
-      });
+  e && setInterval(function () {
+    var e = t.find(function (e) {
+      return e.classList.contains("active");
     });
-  });
+    var c = t.indexOf(e);
+    t.map(function (e) {
+      e.classList.remove("active");
+    }), s.map(function (e) {
+      e.classList.remove("active");
+    }), c < t.length - 1 ? c++ : c = 0, t[c].classList.add("active"), s[c].classList.add("active");
+  }, 4200);
 };
 
 setProductMenu(), setScrollMenu(), setMenuOpenListener(), setStickyMenu(), setOpenCardListener(), setScrollAnimations(), setCreditCardsmenu();

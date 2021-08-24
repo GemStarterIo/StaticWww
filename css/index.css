@@ -438,6 +438,9 @@ button {
           margin: auto;
           filter: grayscale(1);
           transition: 0.5s; }
+          .why_synapse .content_flex .bottom_column .logos img:hover {
+            filter: grayscale(0);
+            transition: 0.5s; }
         @media (min-width: 390px) and (max-width: 525px) {
           .why_synapse .content_flex .bottom_column .logos {
             grid-template-columns: repeat(2, 1fr); } }
@@ -1091,8 +1094,8 @@ button {
 @media screen and (min-width: 1024px) {
   .cross-chain.scrolled .logos img {
     height: auto;
-    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
-    animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both; }
+    -webkit-animation: show 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+    animation: show 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both; }
     .cross-chain.scrolled .logos img:nth-of-type(1) {
       -webkit-animation-delay: 0.2s;
       animation-delay: 0.2s; }
@@ -2415,10 +2418,17 @@ footer {
 
 #creditcard {
   background: #10143e;
-  color: #fff; }
+  color: #fff;
+  height: 1150px;
+  overflow: hidden; }
+  @media (min-width: 525px) {
+    #creditcard {
+      height: 930px; } }
+  @media (min-width: 630px) {
+    #creditcard {
+      height: 1050px; } }
   #creditcard .wrapper_content {
-    padding: 4.8rem 1.6rem;
-    overflow: hidden; }
+    padding: 4.8rem 1.6rem; }
   #creditcard h3 {
     font-size: 3rem;
     line-height: 4.4rem;
@@ -2474,7 +2484,7 @@ footer {
 
 @media (min-width: 1024px) {
   #creditcard {
-    min-height: 746px; }
+    height: 846px; }
     #creditcard .wrapper_content {
       padding: 9.6rem;
       padding-bottom: 0; }
