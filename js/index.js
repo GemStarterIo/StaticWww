@@ -47,11 +47,11 @@ var app = function app() {
   e !== null && e !== void 0 && e.map(function (s) {
     s.addEventListener("click", function (c) {
       c.preventDefault();
-      var r = s.getAttribute("data-id"),
-          n = document.getElementById(r);
+      var n = s.getAttribute("data-id"),
+          r = document.getElementById(n);
       t.map(function (e) {
         e.classList.contains("active") && e.classList.remove("active");
-      }), n.classList.add("active", "selected"), e.map(function (e) {
+      }), r.classList.add("active", "selected"), e.map(function (e) {
         e.classList.contains("active") && e.classList.remove("active");
       }), s.classList.add("active");
     });
@@ -69,8 +69,8 @@ var app = function app() {
     }), !1 === _toConsumableArray(document.querySelectorAll(".selected")).some(function (e) {
       return e.classList.contains("selected");
     }) && (c < t.length - 1 ? c++ : c = 0), t[c].classList.add("active");
-    var r = t[c].getAttribute("id");
-    document.querySelector("[data-id=\"".concat(r, "\"]")).classList.add("active"), t.map(function (e) {
+    var n = t[c].getAttribute("id");
+    document.querySelector("[data-id=\"".concat(n, "\"]")).classList.add("active"), t.map(function (e) {
       e.classList.remove("selected");
     });
   }, 1e4);
@@ -78,6 +78,7 @@ var app = function app() {
     setScrollMenu = function setScrollMenu() {
   _toConsumableArray(document.querySelector(".menu_wrapper.desktop").querySelectorAll("a")).forEach(function (e) {
     e.addEventListener("click", function (t) {
+      if (e.classList.contains("language_btn") || e.classList.contains("external")) return;
       t.preventDefault();
       var s = e.getAttribute("href");
       document.querySelector("".concat(s)).scrollIntoView({
@@ -95,18 +96,17 @@ var app = function app() {
   });
 
   _toConsumableArray(t.querySelectorAll("a")).map(function (c) {
-    c.addEventListener("click", function (r) {
-      if (!c.classList.contains("language_btn")) {
-        r.preventDefault();
-        var n = c.getAttribute("href");
-        t.classList.remove("active"), e.classList.remove("active"), s.classList.remove("active");
-        var a = document.querySelector("".concat(n));
-        setTimeout(function () {
-          a.scrollIntoView({
-            behavior: "smooth"
-          });
-        }, 500);
-      }
+    c.addEventListener("click", function (n) {
+      if (c.classList.contains("language_btn") || c.classList.contains("external")) return;
+      n.preventDefault();
+      var r = c.getAttribute("href");
+      t.classList.remove("active"), e.classList.remove("active"), s.classList.remove("active");
+      var a = document.querySelector("".concat(r));
+      setTimeout(function () {
+        a.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 500);
     });
   });
 },
@@ -121,8 +121,8 @@ var app = function app() {
   !function (e, t) {
     var s = document.getElementById(e),
         c = s.querySelector(".days").querySelector(".counter"),
-        r = s.querySelector(".hours").querySelector(".counter"),
-        n = s.querySelector(".minutes").querySelector(".counter"),
+        n = s.querySelector(".hours").querySelector(".counter"),
+        r = s.querySelector(".minutes").querySelector(".counter"),
         a = s.querySelector(".seconds").querySelector(".counter");
 
     function o() {
@@ -130,17 +130,17 @@ var app = function app() {
         var t = Date.parse(e) - Date.parse(new Date()),
             s = Math.floor(t / 1e3 % 60),
             c = Math.floor(t / 1e3 / 60 % 60),
-            r = Math.floor(t / 36e5 % 24);
+            n = Math.floor(t / 36e5 % 24);
         return {
           total: t,
           days: Math.floor(t / 864e5),
-          hours: r,
+          hours: n,
           minutes: c,
           seconds: s
         };
       }(t);
 
-      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), a.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
+      c.innerHTML = e.days, n.innerHTML = ("0" + e.hours).slice(-2), r.innerHTML = ("0" + e.minutes).slice(-2), a.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
     }
 
     o();
