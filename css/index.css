@@ -2489,21 +2489,21 @@ footer {
       padding: 9.6rem;
       padding-bottom: 0; }
     #creditcard h3 {
-      font-size: 4.4rem;
-      line-height: 6.4rem; }
+      font-size: 4rem;
+      line-height: 6rem; }
     #creditcard h5 {
-      font-size: 3rem;
-      line-height: 3.2rem;
+      font-size: 2.4rem;
+      line-height: 3rem;
       font-weight: 400; }
     #creditcard ul {
-      margin: 6.4rem 0 7rem 2.4rem;
+      margin: 6.4rem 0 6rem 2.4rem;
       max-width: 450px;
       z-index: 2;
       position: relative; }
       #creditcard ul li {
         margin-bottom: 24px;
-        font-size: 2.4rem;
-        line-height: 4.3rem;
+        font-size: 2rem;
+        line-height: 4rem;
         font-weight: 400;
         font-style: normal; }
     #creditcard a {
@@ -2655,6 +2655,24 @@ nav {
         font-size: 16px;
         line-height: 24px;
         color: #10143e; }
+    nav .menu_wrapper.mobile .menu_language {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      nav .menu_wrapper.mobile .menu_language div {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px; }
+        nav .menu_wrapper.mobile .menu_language div a:nth-of-type(1) {
+          margin-right: 10px; }
+        nav .menu_wrapper.mobile .menu_language div a:nth-of-type(2) {
+          margin-left: 10px; }
+      nav .menu_wrapper.mobile .menu_language * {
+        font-size: 1.8rem;
+        color: #10143e; }
+      nav .menu_wrapper.mobile .menu_language svg {
+        max-width: 40px; }
     nav .menu_wrapper.mobile.active {
       transform: translatex(-16px); }
   nav .menu_wrapper.desktop {
@@ -2691,12 +2709,12 @@ nav {
     width: 178px;
     height: auto; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1160px) {
   nav .logo_wrapper .menu_language {
     transition: 1s;
     position: absolute;
     width: 46px;
-    top: 52px;
+    top: 44px;
     right: 66px;
     display: flex;
     flex-direction: column;
@@ -2780,11 +2798,11 @@ nav {
     display: none; }
   nav .menu_wrapper.desktop {
     display: block; } }
-  @media screen and (min-width: 1024px) and (min-width: 1440px) {
+  @media screen and (min-width: 1160px) and (min-width: 1440px) {
     nav .menu_wrapper.desktop {
       padding-left: 6.4rem; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1160px) {
     nav .menu_wrapper.desktop a {
       cursor: pointer;
       font-weight: 600;
