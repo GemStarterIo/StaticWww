@@ -96,15 +96,17 @@ var app = function app() {
 
   _toConsumableArray(t.querySelectorAll("a")).map(function (c) {
     c.addEventListener("click", function (r) {
-      r.preventDefault();
-      var n = c.getAttribute("href");
-      t.classList.remove("active"), e.classList.remove("active"), s.classList.remove("active");
-      var o = document.querySelector("".concat(n));
-      console.log(o), setTimeout(function () {
-        o.scrollIntoView({
-          behavior: "smooth"
-        });
-      }, 500);
+      if (!c.classList.contains("language_btn")) {
+        r.preventDefault();
+        var n = c.getAttribute("href");
+        t.classList.remove("active"), e.classList.remove("active"), s.classList.remove("active");
+        var a = document.querySelector("".concat(n));
+        setTimeout(function () {
+          a.scrollIntoView({
+            behavior: "smooth"
+          });
+        }, 500);
+      }
     });
   });
 },
@@ -121,9 +123,9 @@ var app = function app() {
         c = s.querySelector(".days").querySelector(".counter"),
         r = s.querySelector(".hours").querySelector(".counter"),
         n = s.querySelector(".minutes").querySelector(".counter"),
-        o = s.querySelector(".seconds").querySelector(".counter");
+        a = s.querySelector(".seconds").querySelector(".counter");
 
-    function a() {
+    function o() {
       var e = function (e) {
         var t = Date.parse(e) - Date.parse(new Date()),
             s = Math.floor(t / 1e3 % 60),
@@ -138,11 +140,11 @@ var app = function app() {
         };
       }(t);
 
-      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), o.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
+      c.innerHTML = e.days, r.innerHTML = ("0" + e.hours).slice(-2), n.innerHTML = ("0" + e.minutes).slice(-2), a.innerHTML = ("0" + e.seconds).slice(-2), e.total <= 0 && clearInterval(l);
     }
 
-    a();
-    var l = setInterval(a, 1e3);
+    o();
+    var l = setInterval(o, 1e3);
   }("clock", new Date("July 25, 2021"));
 },
     setOpenCardListener = function setOpenCardListener() {
