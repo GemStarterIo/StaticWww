@@ -1215,10 +1215,10 @@ button {
       font-weight: 600;
       font-size: 24px;
       line-height: 48px; }
-    .road_map .flex_box .flex_item.phase-1 h3 {
+    .road_map .flex_box .flex_item.check h3 {
       position: relative;
       display: inline-block; }
-      .road_map .flex_box .flex_item.phase-1 h3::after {
+      .road_map .flex_box .flex_item.check h3::after {
         content: url("../images/done_ico.svg");
         display: inline-block;
         position: relative;
