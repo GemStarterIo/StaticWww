@@ -2809,7 +2809,7 @@ nav {
       font-size: 1.6rem;
       line-height: 2.44rem;
       color: #10143e;
-      padding-left: 3.2rem; } }
+      padding-left: 1.6rem; } }
 
 .apply_btn button {
   display: flex;
@@ -2847,3 +2847,10 @@ nav {
       height: auto; }
     .social_bar a.github {
       width: 1.7rem; }
+
+.launch-app {  
+    background-color: #10143e;    
+    color: white;
+    padding: 6px;
+    margin-left: 20px;
+}      
