@@ -2848,10 +2848,18 @@ nav {
     .social_bar a.github {
       width: 1.7rem; }
 
-.launch-app {  
+.desktop .launch-app {  
     background-color: #10143e;    
     color: white !important;
     padding: 6px;
     margin-left: 20px;
-    padding-left:1.6rem;
+    padding-left:1.6rem !important;
+    padding-right:1.6rem !important;
+}      
+
+.menu_mobile .launch-app {  
+  background-color: #10143e;    
+  color: white !important;
+  margin-left:4px !important;
+  margin-right:4px !important;
 }      
