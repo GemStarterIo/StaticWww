@@ -2850,7 +2850,8 @@ nav {
 
 .launch-app {  
     background-color: #10143e;    
-    color: white;
+    color: white !important;
     padding: 6px;
     margin-left: 20px;
+    padding-left:1.6rem;
 }      
