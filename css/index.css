@@ -181,6 +181,8 @@ button {
     filter: blur(0px) grayscale(1);
     opacity: 1; } }
 
+
+
 .splash {
   height: 720px;
   background-color: #ffd384;
@@ -191,11 +193,13 @@ button {
     line-height: 4.8rem;
     font-weight: 600;
     font-size: 3rem;
-    padding-top: 11.2rem;
     padding-bottom: 2.2rem;
     text-transform: uppercase;
     color: #10143e;
     max-width: 343px; }
+.splash-first {
+    padding-top: 5rem;
+}
   .splash iframe {
     max-height: 400px; }
     @media (max-width: 768px) {
@@ -252,8 +256,27 @@ button {
     margin-top: 50px;
     max-width: 342px; }
 
+.dex_buttons .apply_btn {
+    display: inline-block;
+    padding-right: 10px;
+    width: 300px;
+}
+.dex_buttons img, dex_buttons svg {
+    /* 
+    vertical-align: middle;
+    display: inline-block;
+    */
+    height: 18px;
+}
+
+.dex_buttons a {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+
 @media screen and (min-width: 768px) {
-  .splash {
+    .splash {
     background-position: center top; }
     .splash-header-main {
       line-height: 7rem;
