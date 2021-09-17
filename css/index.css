@@ -250,8 +250,7 @@ button {
       transform-origin: center;
       transform: translate(-50%, 0.4rem);
       left: 60%; }
-  .splash .apply_btn {
-    padding-top: 4rem; }
+
   .splash .social_bar {
     margin-top: 50px;
     max-width: 342px; }
@@ -260,6 +259,11 @@ button {
     display: inline-block;
     padding-right: 10px;
     width: 300px;
+    padding-top: 10px;
+}
+
+.splash .apply_btn {
+    padding-top: 0.8rem;
 }
 .dex_buttons img, dex_buttons svg {
     /* 
@@ -270,7 +274,7 @@ button {
 }
 
 .dex_buttons a {
-    padding: 10px;
+    padding: 0px;
     vertical-align: middle;
 }
 
