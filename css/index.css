@@ -3818,3 +3818,34 @@ nav .menu_burger.active div:nth-last-of-type(3) {
   margin-right: 4px !important;
   padding: 4px 6px;
 }
+
+.navbar-cert {
+    color: white;
+    width: 128px;
+    line-height: 0.95em;
+    margin-left: 10px;
+}
+
+.navbar-cert a {
+    display: block;
+    color: #10143e;
+    font-size: 10px;
+
+}
+
+.navbar-cert a .navbar-cert-text {
+    float: left;
+    display: block;
+}
+
+.navbar-cert a img {
+    height: 20px;
+    float: left;
+}
+
+.sticky .wrapper_content .navbar-cert {
+    color: red;
+    transform: scale(0.75);
+    line-height: 0.95em;
+    margin-left: -40px;
+}
